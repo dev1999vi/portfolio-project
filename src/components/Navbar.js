@@ -6,9 +6,18 @@ import {FaBars, FaTimes} from 'react-icons/fa';
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => setClicked(!clicked);
+  const [color, setColor] = useState(false);
+  const changeColor = () => {
+    if(window.screenY >= 100)
+    setColor(true);
+    else
+    setColor(false);
+  }
+
+  window.addEventListener('scroll',changeColor);
 
   return (
-    <nav className='header'>
+    <nav className={color ? 'header header-bg': 'header'}>
         <Link to='/'><h1>Portfolio</h1></Link>
         <ul className={clicked ? 'nav-options active':'nav-options'}>
             <li><Link to='/'>Home</Link></li>
